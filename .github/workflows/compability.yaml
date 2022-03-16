@@ -41,6 +41,8 @@ jobs:
       - name: Compare merged schemas
         run: |
           ls
+          cd feature/schemas
+          ls
       - name: Check Address Schema
         uses: kamilkisiela/graphql-inspector@master
         with:
