@@ -36,7 +36,9 @@ jobs:
       - name: Merge feature branch schemas
         run: |
           ls
-          cd feature/schemas
+          cd feature
+          ls
+          cd schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Check Address Schema
