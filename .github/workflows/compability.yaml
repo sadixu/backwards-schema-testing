@@ -22,7 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        path: main
+        with:
+          path: main
       - name: Merge main schemas
         run: |
           cd main/schemas
