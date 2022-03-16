@@ -4,4 +4,6 @@ type Address {
   state: String
   country: String
   number: String
+  homeNumber: Int
+  flatNumber: Int
 }
