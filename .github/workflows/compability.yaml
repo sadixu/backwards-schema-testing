@@ -18,7 +18,9 @@ jobs:
         run: npm install --global @graphql-inspector/ci @graphql-inspector/diff-command @graphql-inspector/graphql-loader
       - name: Merge target schemas
         run: |
-          cd target/schemas
+          cd target
+          git branch
+          cd schemas
           cut -b 1- ./*.graphql > schema.graphql
           # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
