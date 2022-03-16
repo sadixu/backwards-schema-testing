@@ -23,7 +23,6 @@ jobs:
           git checkout main
           cd schemas
           cut -b 1- ./*.graphql > schema.graphql
-          # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Checkout source branch
         uses: actions/checkout@v2
@@ -33,10 +32,10 @@ jobs:
         run: |
           cd source/schemas
           cut -b 1- ./*.graphql > schema.graphql
-          # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Compare merged schemas
         run: |
+          npm ls graphql
           cat ./target/schemas/schema.graphql
           cat ./source/schemas/schema.graphql
           graphql-inspector diff './target/schemas/schema.graphql' './source/schemas/schema.graphql'
