@@ -29,8 +29,9 @@ jobs:
         with:
           node-version: 'lts/*'
       - name: Install GraphQL inspector
-        run: |
-          npm install --global @graphql-inspector/diff-command
+        run: npm install --global @graphql-inspector/diff-command
+      - name: Install GraphQL loader
+        run: npm install --global @graphql-inspector/graphql-loader 
       - name: Merge target schemas
         run: |
           cd target/schemas
