@@ -6,7 +6,7 @@ jobs:
     name: Check Merged Schema
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout target branch
         uses: actions/checkout@main
         with:
           path: target
@@ -19,21 +19,21 @@ jobs:
       - name: Merge target schemas
         run: |
           cd target
-          git branch
+          git checkout main
           cd schemas
           cut -b 1- ./*.graphql > schema.graphql
           # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
-      - name: Checkout feature branch
+      - name: Checkout source branch
         uses: actions/checkout@v2
         with:
-          path: feature
+          path: source
       - name: Merge feature branch schemas
         run: |
-          cd feature/schemas
+          cd source/schemas
           cut -b 1- ./*.graphql > schema.graphql
           # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Compare merged schemas
         run: |
-          graphql-inspector diff './target/schemas/schema.graphql' './feature/schemas/schema.graphql'
+          graphql-inspector diff './target/schemas/schema.graphql' './source/schemas/schema.graphql'
