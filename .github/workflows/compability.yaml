@@ -2,21 +2,7 @@
 name: Validate Backwards Compability GraphQL Schema 
 on: [push]
 jobs:
-  # test:
-  #   name: Check Schema
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@main
-  #     - name: Check Address Schema
-  #       uses: kamilkisiela/graphql-inspector@master
-  #       with:
-  #         schema: 'main:schemas/address.graphql'
-  #     - name: Check Person Schema
-  #       uses: kamilkisiela/graphql-inspector@master
-  #       with:
-  #         schema: 'main:schemas/person.graphql'
-  test2:
+  check-graphql-compability:
     name: Check Merged Schema
     runs-on: ubuntu-latest
     steps:
@@ -48,15 +34,4 @@ jobs:
           cat schema.graphql
       - name: Compare merged schemas
         run: |
-          node -v
-          ls
           graphql-inspector diff './target/schemas/schema.graphql' './feature/schemas/schema.graphql'
-          ls
-      # - name: Check Address Schema
-      #   uses: kamilkisiela/graphql-inspector@master
-      #   with:
-      #     schema: 'target:schemas/address.graphql'
-      # - name: Check Person Schema
-      #   uses: kamilkisiela/graphql-inspector@master
-      #   with:
-      #     schema: 'main:schemas/person.graphql'
