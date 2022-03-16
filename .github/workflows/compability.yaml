@@ -21,7 +21,6 @@ jobs:
           cd target
           git fetch
           git checkout main
-          npm install
           cd schemas
           cut -b 1- ./*.graphql > schema.graphql
           cat schema.graphql
@@ -31,9 +30,7 @@ jobs:
           path: source
       - name: Merge source branch schemas
         run: |
-          cd source
-          npm install
-          cd schemas
+          cd source/schemas
           cut -b 1- ./*.graphql > schema.graphql
           cat schema.graphql
       - name: Compare merged schemas
