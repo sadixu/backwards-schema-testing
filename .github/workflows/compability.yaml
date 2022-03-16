@@ -26,6 +26,7 @@ jobs:
           path: main
       - name: Merge main schemas
         run: |
+          ls
           cd main/schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
