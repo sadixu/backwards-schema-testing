@@ -1,5 +1,6 @@
 type Person {
   id: Int!
+  name: String
   firstname: String
   surname: String
   phoneNumber: Int!
