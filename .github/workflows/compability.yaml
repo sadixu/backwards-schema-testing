@@ -34,6 +34,7 @@ jobs:
           cat schema.graphql
       - name: Merge feature branch schemas
         run: |
+          ls
           cd schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
