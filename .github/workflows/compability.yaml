@@ -22,11 +22,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        path: main
       - name: Merge main schemas
         run: |
-          cd schemas
-          cat main:address.graphql main:person.graphql > main:schema.graphql
-          cat main:schema.graphql
+          cd main/schemas
+          cat address.graphql person.graphql > schema.graphql
+          cat schema.graphql
       - name: Merge feature branch schemas
         run: |
           cd schemas
