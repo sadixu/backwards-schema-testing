@@ -28,6 +28,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
+      - name: Install GraphQL inspector
+        run: |
+          npm install --global @graphql-inspector/diff-command
       - name: Merge main schemas
         run: |
           cd main/schemas
