@@ -34,6 +34,8 @@ jobs:
           cat schema.graphql
       - name: Checkout feature branch
         uses: actions/checkout@v2
+        with:
+          path: feature
       - name: Merge feature branch schemas
         run: |
           ls
