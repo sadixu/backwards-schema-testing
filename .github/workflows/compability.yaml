@@ -26,6 +26,7 @@ jobs:
         run: |
           cd schemas
           cat address.graphql person.graphql > schema.graphql
+          cat schema.graphql
       - name: Check Address Schema
         uses: kamilkisiela/graphql-inspector@master
         with:
