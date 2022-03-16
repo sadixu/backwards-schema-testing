@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
         with:
-          path: main
+          path: target
       - name: Install node
         uses: actions/setup-node@v2
         with:
@@ -31,9 +31,9 @@ jobs:
       - name: Install GraphQL inspector
         run: |
           npm install --global @graphql-inspector/diff-command
-      - name: Merge main schemas
+      - name: Merge target schemas
         run: |
-          cd main/schemas
+          cd target/schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Checkout feature branch
@@ -48,13 +48,13 @@ jobs:
       - name: Compare merged schemas
         run: |
           ls
-          cd feature/schemas
+          graphql-inspector diff './target/schemas/schema.graphql' './feature/schemas/schema.graphql'
           ls
-      - name: Check Address Schema
-        uses: kamilkisiela/graphql-inspector@master
-        with:
-          schema: 'main:schemas/address.graphql'
-      - name: Check Person Schema
-        uses: kamilkisiela/graphql-inspector@master
-        with:
-          schema: 'main:schemas/person.graphql'
+      # - name: Check Address Schema
+      #   uses: kamilkisiela/graphql-inspector@master
+      #   with:
+      #     schema: 'target:schemas/address.graphql'
+      # - name: Check Person Schema
+      #   uses: kamilkisiela/graphql-inspector@master
+      #   with:
+      #     schema: 'main:schemas/person.graphql'
