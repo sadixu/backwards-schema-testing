@@ -18,8 +18,7 @@ jobs:
   #         schema: 'main:schemas/person.graphql'
   test2:
     name: Check Merged Schema
-    docker:
-      - image: kamilkisiela/graphql-inspector
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -29,10 +28,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
-      # - name: Install GraphQL inspector
-      #   run: npm install --global @graphql-inspector/diff-command
-      # - name: Install GraphQL loader
-      #   run: npm install --global @graphql-inspector/graphql-loader 
+      - name: Install GraphQL inspector
+        run: npm install --global @graphql-inspector/diff-command
+      - name: Install GraphQL loader
+        run: npm install --global @graphql-inspector/graphql-loader 
       - name: Merge target schemas
         run: |
           cd target/schemas
@@ -49,6 +48,7 @@ jobs:
           cat schema.graphql
       - name: Compare merged schemas
         run: |
+          node -v
           ls
           graphql-inspector diff './target/schemas/schema.graphql' './feature/schemas/schema.graphql'
           ls
