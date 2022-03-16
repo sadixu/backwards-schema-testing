@@ -19,6 +19,7 @@ jobs:
       - name: Merge target schemas
         run: |
           cd target
+          git fetch
           git checkout main
           cd schemas
           cut -b 1- ./*.graphql > schema.graphql
