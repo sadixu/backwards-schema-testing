@@ -33,7 +33,8 @@ jobs:
       - name: Merge target schemas
         run: |
           cd target/schemas
-          cat address.graphql person.graphql > schema.graphql
+          cut -b 1- ./*.graphql > schema.graphql
+          # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Checkout feature branch
         uses: actions/checkout@v2
@@ -42,7 +43,8 @@ jobs:
       - name: Merge feature branch schemas
         run: |
           cd feature/schemas
-          cat address.graphql person.graphql > schema.graphql
+          cut -b 1- ./*.graphql > schema.graphql
+          # cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Compare merged schemas
         run: |
