@@ -37,4 +37,4 @@ jobs:
         run: |
           cat ./target/schemas/schema.graphql
           cat ./source/schemas/schema.graphql
-          graphql-inspector diff './target/schemas/schema.graphql' './source/schemas/schema.graphql'
+          graphql-inspector diff './target/schemas/address.graphql' './source/schemas/address.graphql'
