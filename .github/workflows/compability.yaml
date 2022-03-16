@@ -35,4 +35,4 @@ jobs:
           cat schema.graphql
       - name: Compare merged schemas
         run: |
-          graphql-inspector diff './target/schemas/address.graphql' './source/schemas/address.graphql'
+          graphql-inspector diff './target/schemas/schema.graphql' './source/schemas/schema.graphql'
