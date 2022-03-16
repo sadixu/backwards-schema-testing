@@ -26,10 +26,7 @@ jobs:
           path: main
       - name: Merge main schemas
         run: |
-          ls
-          cd main
-          ls
-          cd schemas
+          cd main/schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Checkout feature branch
@@ -39,7 +36,7 @@ jobs:
       - name: Merge feature branch schemas
         run: |
           ls
-          cd schemas
+          cd feature/schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Check Address Schema
