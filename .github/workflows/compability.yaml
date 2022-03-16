@@ -27,7 +27,7 @@ jobs:
       - name: Merge main schemas
         run: |
           cd main/schemas
-          cat address.graphql "" person.graphql > schema.graphql
+          cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Checkout feature branch
         uses: actions/checkout@v2
@@ -36,8 +36,11 @@ jobs:
       - name: Merge feature branch schemas
         run: |
           cd feature/schemas
-          cat address.graphql "" person.graphql > schema.graphql
+          cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
+      - name: Compare merged schemas
+        run: |
+          ls
       - name: Check Address Schema
         uses: kamilkisiela/graphql-inspector@master
         with:
