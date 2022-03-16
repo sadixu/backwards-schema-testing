@@ -27,7 +27,9 @@ jobs:
       - name: Merge main schemas
         run: |
           ls
-          cd main/schemas
+          cd main
+          ls
+          cd schemas
           cat address.graphql person.graphql > schema.graphql
           cat schema.graphql
       - name: Merge feature branch schemas
