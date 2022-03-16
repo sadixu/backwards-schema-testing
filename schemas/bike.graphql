@@ -1,0 +1,5 @@
+type Bike {
+  crank: String
+  frame: String
+  shifters: String
+}
